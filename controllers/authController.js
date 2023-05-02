@@ -71,7 +71,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError('Incorrect email or password', null));
   }
 
-  createSendToken(user, 200, res);
+  // createSendToken(user, 200, res);
 });
 
 exports.protectRoute = catchAsync(async (req, res, next) => {
