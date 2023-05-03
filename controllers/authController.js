@@ -66,13 +66,12 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email }).select('+password');
-  console.log(user, 'user');
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(new AppError('Incorrect email or password', null));
   }
 
-  // createSendToken(user, 200, res);
+  createSendToken(user, 200, res);
 });
 
 exports.protectRoute = catchAsync(async (req, res, next) => {
