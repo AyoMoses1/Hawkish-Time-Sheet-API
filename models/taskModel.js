@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema(
   {
-    employee: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
@@ -25,7 +25,7 @@ const taskSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 const Task = mongoose.model('Task', taskSchema);

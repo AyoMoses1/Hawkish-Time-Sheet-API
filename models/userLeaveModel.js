@@ -20,7 +20,7 @@ const leaveApplicationSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 const LeaveApplication = mongoose.model(
