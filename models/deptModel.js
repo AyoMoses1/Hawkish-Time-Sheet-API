@@ -1,15 +1,25 @@
 const mongoose = require('mongoose');
 
-const deptSchema = new mongoose.Schema(
+const departmentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'A department must have a valid name'],
+      required: true,
     },
+    description: {
+      type: String,
+      required: true,
+    },
+    employees: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   { timestamps: true }
 );
 
-const Department = mongoose.model('Department', deptSchema);
+const Department = mongoose.model('Department', departmentSchema);
 
 module.exports = Department;
