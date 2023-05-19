@@ -47,10 +47,7 @@ exports.deleteDepartment = async (req, res) => {
 };
 
 exports.getDepartmentDetails = catchAsync(async (req, res, next) => {
-  const department = await Department.findById(req.params.id).populate({
-    path: 'employees',
-    select: '-passwordChangedAt -createdAt -updatedAt -__v',
-  });
+  const department = await Department.findById(req.params.id);
 
   if (!department) {
     return next(
